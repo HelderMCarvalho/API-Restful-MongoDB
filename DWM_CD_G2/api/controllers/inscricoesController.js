@@ -18,14 +18,14 @@ exports.create_a_inscricao = function (req, res) {
     });
 };
 exports.read_a_inscricao = function (req, res) {
-    Inscricao.findById(req.params.id, function (err, inscricao) {
+    Inscricao.findById(req.params.idInscricao, function (err, inscricao) {
         if (err)
             res.send(err);
         res.json(inscricao);
     });
 };
 exports.update_a_inscricao = function (req, res) {
-    Inscricao.findOneAndUpdate({ _id: req.params.id },
+    Inscricao.findOneAndUpdate({ _id: req.params.idInscricao },
         req.body, { new: true }, function (err, inscricao) {
             if (err)
                 res.send(err);
@@ -33,7 +33,7 @@ exports.update_a_inscricao = function (req, res) {
         });
 };
 exports.delete_a_inscricao = function (req, res) {
-    Inscricao.remove({ _id: req.params.id },
+    Inscricao.remove({ _id: req.params.idInscricao },
         function (err, inscricao) {
             if (err)
                 res.send(err);
