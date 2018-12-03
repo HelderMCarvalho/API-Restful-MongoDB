@@ -57,6 +57,14 @@ exports.create_a_novaInscricaoEvento = function (req, res) {
         });
     });
 };
+exports.update_a_evento = function (req, res) {
+    Evento.findOneAndUpdate({ _id: req.params.idEvento },
+        req.body, { new: true }, function (err, evento) {
+            if (err)
+                res.send(err);
+            res.json(evento);
+        });
+};
 exports.delete_a_evento = function (req, res) {
     Evento.remove({ _id: req.params.idEvento },
         function (err, evento) {

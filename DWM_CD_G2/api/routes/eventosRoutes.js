@@ -10,5 +10,6 @@ module.exports = function (app) {
     app.route('/eventos/:idEvento')
         .get(eventos.read_a_evento) //Funciona
         .post(eventos.create_a_novaInscricaoEvento) //Funciona
+        .put(eventos.update_a_evento) //Funciona
         .delete(eventos.delete_a_evento); //Funciona
 };

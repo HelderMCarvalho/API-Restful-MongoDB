@@ -13,7 +13,7 @@ Utilização de API Restful (MongoDB)
 | /eventos | POST | Cria um novo evento | Funciona |
 | /eventos/`:idEvento` | POST | Cria uma nova inscrição num determinado evento (`idEvento` passado por URL) | Funciona |
 |  | POST |  |
-| /eventos/`:idEvento` | PUT | Editar o evento (`idEvento` passado por URL) |
+| /eventos/`:idEvento` | PUT | Editar o evento (`idEvento` passado por URL) | Funciona |
 | /inscricoes/`:idInscricao` | PUT | Editar a inscrição (`idInscricao` passado por URL) |
 |  | PUT |  |
 | /eventos/`:idEvento` | DELETE | Elimina um determinado evento (`idEvento` passado por URL) | Funciona |
