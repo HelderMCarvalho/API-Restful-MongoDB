@@ -8,6 +8,7 @@ module.exports = function (app) {
     app.route('/eventos/:idEvento/listaInscricoes')
         .get(eventos.list_all_inscricoesEvento); //Em desenvolvimento
     app.route('/eventos/:idEvento')
+        .get(eventos.read_a_evento) //Funciona
         .post(eventos.create_a_novaInscricaoEvento) //Funciona
         .delete(eventos.delete_a_evento); //Funciona
 };

@@ -1,4 +1,4 @@
-# API-Restful_DWM_CD_G2
+﻿# API-Restful_DWM_CD_G2
 Utilização de API Restful (MongoDB)
 
 ### **Tema do trabalho:** Cenário 1
@@ -8,7 +8,7 @@ Utilização de API Restful (MongoDB)
 | Endereço/Rota | Método HTTP | Resultado | Estado |
 | --- | --- | --- | --- |
 | /eventos | GET | Lista de todos os eventos e toda a sua informação | Funciona |
-| /eventos/`:idEvento` | GET | Obtenção de toda a informação de um determinado evento |  |
+| /eventos/`:idEvento` | GET | Obtenção de toda a informação de um determinado evento | Funciona |
 | /eventos/`:idEvento`/listaInscricoes | GET | Lista de todos os inscritos e sua respetiva informação de um determinado evento (`idEvento` passado por URL) | Em desenvolvimento |
 | /eventos | POST | Cria um novo evento | Funciona |
 | /eventos/`:idEvento` | POST | Cria uma nova inscrição num determinado evento (`idEvento` passado por URL) | Funciona |

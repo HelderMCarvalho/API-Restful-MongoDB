@@ -38,6 +38,13 @@ exports.list_all_inscricoesEvento = function (req, res) {
         //PROBLEMA
     });
 };
+exports.read_a_evento = function (req, res) {
+    Evento.findById(req.params.idEvento, function (err, evento) {
+        if (err)
+            res.send(err);
+        res.json(evento);
+    });
+};
 exports.create_a_novaInscricaoEvento = function (req, res) {
     var new_insc = new Inscricao(req.body);
     new_insc.save(function (err, inscricao) {
