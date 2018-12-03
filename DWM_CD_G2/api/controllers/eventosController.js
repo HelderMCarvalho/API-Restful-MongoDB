@@ -1,5 +1,6 @@
 'use strict';
 var mongoose = require('mongoose'),
+    async = require("async"),
     Inscricao = mongoose.model('Inscricao'),
     Evento = mongoose.model('Evento');
 exports.list_all_eventos = function (req, res) {
@@ -19,23 +20,23 @@ exports.create_a_evento = function (req, res) {
 };
 exports.list_all_inscricoesEvento = function (req, res) {
     Evento.findById(req.params.idEvento, function (err, evento) {
-        if (err)
+        if (err) 
             res.send(err);
         let listaInscricoes = [];
-        /*for (var idInscricao in evento.inscritos) {
-            Inscricao.findById(idInscricao, function (err, inscricao) {
+        async.each(evento.inscritos, function (inscritoAtual, callback) {
+            Inscricao.find({ _id: inscritoAtual._id }, function (err, inscricao) {
                 listaInscricoes.push(inscricao);
                 console.log(inscricao);
+                callback();
             });
-        }*/
-        for (var i = 0, len = evento.inscritos.length; i < len; i++) {
-            Inscricao.findById(evento.inscritos[i]._id, function (err, inscricao) {
-                listaInscricoes.push(inscricao);
-                console.log(inscricao);
+        }, function (err) {
+            if (err) {
+                console.log('Erro');
+            } else {
+                res.json(listaInscricoes);
+            }
             });
-        }
-        res.json(listaInscricoes);
-        //PROBLEMA
+        //DEMORA ALGUNS SEGUNDOS PARA DEVOLVER TUDO (PROBLEMA)
     });
 };
 exports.read_a_evento = function (req, res) {

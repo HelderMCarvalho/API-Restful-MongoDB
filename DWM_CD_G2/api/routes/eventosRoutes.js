@@ -6,7 +6,7 @@ module.exports = function (app) {
         .get(eventos.list_all_eventos) //Funciona
         .post(eventos.create_a_evento); //Funciona
     app.route('/eventos/:idEvento/listaInscricoes')
-        .get(eventos.list_all_inscricoesEvento); //Em desenvolvimento
+        .get(eventos.list_all_inscricoesEvento); //Funciona (Problema de Performance)
     app.route('/eventos/:idEvento')
         .get(eventos.read_a_evento) //Funciona
         .post(eventos.create_a_novaInscricaoEvento) //Funciona

@@ -9,7 +9,7 @@ Utilização de API Restful (MongoDB)
 | --- | --- | --- | --- |
 | /eventos | GET | Lista de todos os eventos e toda a sua informação | Funciona |
 | /eventos/`:idEvento` | GET | Obtenção de toda a informação de um determinado evento | Funciona |
-| /eventos/`:idEvento`/listaInscricoes | GET | Lista de todos os inscritos e sua respetiva informação de um determinado evento (`idEvento` passado por URL) | Em desenvolvimento |
+| /eventos/`:idEvento`/listaInscricoes | GET | Lista de todos os inscritos e sua respetiva informação de um determinado evento (`idEvento` passado por URL) | Funciona |
 | /eventos | POST | Cria um novo evento | Funciona |
 | /eventos/`:idEvento` | POST | Cria uma nova inscrição num determinado evento (`idEvento` passado por URL) | Funciona |
 |  | POST |  |

@@ -11,7 +11,6 @@ var express = require('express'),
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/InscricaoDB', { useNewUrlParser: true });
 
-
 aplicacao.use(bodyParser.urlencoded({
     extended:
         true
