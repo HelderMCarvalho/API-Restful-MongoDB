@@ -2,7 +2,8 @@
 var mongoose = require('mongoose'),
     async = require("async"),
     Inscricao = mongoose.model('Inscricao'),
-    Evento = mongoose.model('Evento');
+    Evento = mongoose.model('Evento'),
+    Pessoa = mongoose.model('Pessoa');
 exports.list_all_eventos = function (req, res) {
     Evento.find({}, function (err, evento) {
         if (err)

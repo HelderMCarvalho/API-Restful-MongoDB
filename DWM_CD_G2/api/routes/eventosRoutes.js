@@ -1,12 +1,11 @@
 'use strict';
 module.exports = function (app) {
     var eventos = require('../controllers/eventosController');
-    // rotas definidas para a API
     app.route('/eventos')
         .get(eventos.list_all_eventos) //Funciona
         .post(eventos.create_a_evento); //Funciona
     app.route('/eventos/:idEvento/listaInscricoes')
-        .get(eventos.list_all_inscricoesEvento); //Funciona (Problema de Performance)
+        .get(eventos.list_all_inscricoesEvento); //Funciona (Problema de Performance) (JUNTAR DADOS DA PESSOA)
     app.route('/eventos/:idEvento')
         .get(eventos.read_a_evento) //Funciona
         .post(eventos.create_a_novaInscricaoEvento) //Funciona

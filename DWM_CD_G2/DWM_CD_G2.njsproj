@@ -29,10 +29,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="api\controllers\eventosController.js" />
+    <Compile Include="api\controllers\pessoaController.js" />
     <Compile Include="api\controllers\inscricoesController.js" />
     <Compile Include="api\models\eventosModels.js" />
+    <Compile Include="api\models\pessoaModels.js" />
     <Compile Include="api\models\inscricoesModels.js" />
     <Compile Include="api\routes\eventosRoutes.js" />
+    <Compile Include="api\routes\pessoaRoutes.js" />
     <Compile Include="api\routes\inscricoesRoutes.js" />
     <Compile Include="app.js" />
     <Content Include="package.json" />

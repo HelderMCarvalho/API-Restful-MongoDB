@@ -12,15 +12,15 @@ Utilização de API Restful (MongoDB)
 | /eventos/`:idEvento`/listaInscricoes | GET | Lista de todos os inscritos e sua respetiva informação de um determinado evento (`idEvento` passado por URL) | Funciona |
 | /eventos | POST | Cria um novo evento | Funciona |
 | /eventos/`:idEvento` | POST | Cria uma nova inscrição num determinado evento (`idEvento` passado por URL) | Funciona |
-|  | POST |  |
+| /pessoa | POST | Cria uma nova Pessoa | Funciona |
 | /eventos/`:idEvento` | PUT | Editar o evento (`idEvento` passado por URL) | Funciona |
 | /inscricoes/`:idInscricao` | PUT | Editar a inscrição (`idInscricao` passado por URL) | Funciona |
-|  | PUT |  |
+| /pessoa/`:idPessoa` | PUT | Editar a pessoa (`idPessoa` passado por URL) | Funciona |
 | /eventos/`:idEvento` | DELETE | Elimina um determinado evento (`idEvento` passado por URL) | Funciona |
 | /eventos/`:idEvento`/`:idInscricao` | DELETE | Elimina um inscrito de um determinado evento (`idEvento` e `idInscricao` passados por URL) | Funciona |
-|  | DELETE |  |
+| /pessoa/`:idPessoa` | DELETE | Elimina uma determinada pessoa (`idPessoa` passado por URL) | Funciona |
 
-(2ª fase - criar tabela de `Pessoa`; trocar campo `nome` por `idPessoa` na tabela `inscricaos`)
+- [x] 2ª fase - criar tabela `Pessoa`; trocar campo `nome` por `idPessoa` na tabela `inscricaos`; relação entre pessoa e evento é uma `inscricao`)
 
 ### **Elementos do grupo:**
 - Hélder Carvalho, a15310

@@ -2,13 +2,16 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var InscSchema = new Schema({
-    nome: {
-        type: String,
-        required: 'Nome da pessoa a inscrever'
+    idPessoa: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Pessoa'
     }, estado: {
         type: String,
         enum: ['Pendente', 'Confirmado', 'Cancelado'],
         default: 'Pendente'
+    }, lugares: {
+        type: Number,
+        default: 1
     },
     Created_date: {
         type: Date,
