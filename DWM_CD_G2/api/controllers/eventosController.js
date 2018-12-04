@@ -35,7 +35,7 @@ exports.list_all_inscricoesEvento = function (req, res) {
             } else {
                 res.json(listaInscricoes);
             }
-            });
+        });
         //DEMORA ALGUNS SEGUNDOS PARA DEVOLVER TUDO (PROBLEMA)
     });
 };
@@ -59,18 +59,27 @@ exports.create_a_novaInscricaoEvento = function (req, res) {
     });
 };
 exports.update_a_evento = function (req, res) {
-    Evento.findOneAndUpdate({ _id: req.params.idEvento },
-        req.body, { new: true }, function (err, evento) {
-            if (err)
-                res.send(err);
-            res.json(evento);
-        });
+    Evento.findOneAndUpdate({ _id: req.params.idEvento }, req.body, { new: true }, function (err, evento) {
+        if (err)
+            res.send(err);
+        res.json(evento);
+    });
 };
 exports.delete_a_evento = function (req, res) {
-    Evento.remove({ _id: req.params.idEvento },
-        function (err, evento) {
+    Evento.remove({ _id: req.params.idEvento }, function (err, evento) {
+        if (err)
+            res.send(err);
+        res.json({ message: 'Evento eliminado!' });
+    });
+};
+exports.delete_a_inscricao_evento = function (req, res) {
+    Evento.findOneAndUpdate({ _id: req.params.idEvento }, { $pull: { inscritos: req.params.idInscricao } }, { new: true }, function (err, evento) {
+        if (err)
+            res.send(err);
+        Inscricao.remove({ _id: req.params.idInscricao }, function (err, inscricao) {
             if (err)
                 res.send(err);
-            res.json({ message: 'Evento eliminado!' });
+            res.json({ message: 'Inscricao eliminada!' });
         });
+    });
 };

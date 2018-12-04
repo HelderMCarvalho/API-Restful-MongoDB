@@ -33,10 +33,9 @@ exports.update_a_inscricao = function (req, res) {
         });
 };
 exports.delete_a_inscricao = function (req, res) {
-    Inscricao.remove({ _id: req.params.idInscricao },
-        function (err, inscricao) {
-            if (err)
-                res.send(err);
-            res.json({ message: 'inscricao eliminada' });
-        });
+    Inscricao.remove({ _id: req.params.idInscricao }, function (err, inscricao) {
+        if (err)
+            res.send(err);
+        res.json({ message: 'inscricao eliminada' });
+    });
 };

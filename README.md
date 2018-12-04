@@ -17,7 +17,7 @@ Utilização de API Restful (MongoDB)
 | /inscricoes/`:idInscricao` | PUT | Editar a inscrição (`idInscricao` passado por URL) | Funciona |
 |  | PUT |  |
 | /eventos/`:idEvento` | DELETE | Elimina um determinado evento (`idEvento` passado por URL) | Funciona |
-| /eventos/`:idEvento`/`:idInscricao` | DELETE | Elimina um inscrito de um determinado evento (`idEvento` e `idInscricao` passados por URL) |
+| /eventos/`:idEvento`/`:idInscricao` | DELETE | Elimina um inscrito de um determinado evento (`idEvento` e `idInscricao` passados por URL) | Funciona |
 |  | DELETE |  |
 
 (2ª fase - criar tabela de `Pessoa`; trocar campo `nome` por `idPessoa` na tabela `inscricaos`)

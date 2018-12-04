@@ -12,4 +12,6 @@ module.exports = function (app) {
         .post(eventos.create_a_novaInscricaoEvento) //Funciona
         .put(eventos.update_a_evento) //Funciona
         .delete(eventos.delete_a_evento); //Funciona
+    app.route('/eventos/:idEvento/:idInscricao')
+        .delete(eventos.delete_a_inscricao_evento); //Funciona
 };
