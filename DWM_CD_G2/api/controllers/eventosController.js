@@ -48,16 +48,30 @@ exports.read_a_evento = function (req, res) {
     });
 };
 exports.create_a_novaInscricaoEvento = function (req, res) {
-    var new_insc = new Inscricao(req.body);
-    new_insc.save(function (err, inscricao) {
-        if (err)
-            res.send(err);
-        Evento.findOneAndUpdate({ _id: req.params.idEvento }, { $push: { inscritos: new_insc._id } }, { new: true }, function (err, evento) {
-            if (err)
-                res.send(err);
-            res.json({ 'novaInscricao': inscricao, 'eventoAlterado': evento });
-        });
-    });
+	Evento.findById(req.params.idEvento, function (err, evento) {
+		if (err)
+			res.send(err);
+		if (evento.lotacaoAtual < evento.lotacao) {
+			var total = parseInt(evento.lotacaoAtual) + parseInt(req.body.lugares);
+			console.log(total);
+			if (total <= evento.lotacao) {
+				var new_insc = new Inscricao(req.body);
+				new_insc.save(function (err, inscricao) {
+					if (err)
+						res.send(err);
+					Evento.findOneAndUpdate({ _id: req.params.idEvento }, { $push: { inscritos: new_insc._id }, lotacaoAtual: total }, { new: true }, function (err, evento) {
+						if (err)
+							res.send(err);
+						res.json({ 'novaInscricao': inscricao, 'eventoAlterado': evento });
+					});
+				});
+			} else {
+				res.json({ message: 'Os lugares que quer reservar nao estao disponiveis, tente reservar menos lugares!' });
+			}
+		} else {
+			res.json({ message: 'Evento cheio' });
+		}
+	});
 };
 exports.update_a_evento = function (req, res) {
     Evento.findOneAndUpdate({ _id: req.params.idEvento }, req.body, { new: true }, function (err, evento) {
@@ -74,13 +88,27 @@ exports.delete_a_evento = function (req, res) {
     });
 };
 exports.delete_a_inscricao_evento = function (req, res) {
-    Evento.findOneAndUpdate({ _id: req.params.idEvento }, { $pull: { inscritos: req.params.idInscricao } }, { new: true }, function (err, evento) {
-        if (err)
-            res.send(err);
-        Inscricao.remove({ _id: req.params.idInscricao }, function (err, inscricao) {
-            if (err)
-                res.send(err);
-            res.json({ message: 'Inscricao eliminada!' });
-        });
-    });
+	Evento.findById(req.params.idEvento, function (err, evento) {
+		if (err)
+			res.send(err);
+		if (evento.lotacaoAtual > 0) {
+			Inscricao.findById(req.params.idInscricao, function (err, inscricao) {
+				if (err)
+					res.send(err);
+				var subtrair = evento.lotacaoAtual - inscricao.lugares;
+				Evento.findOneAndUpdate({ _id: req.params.idEvento }, { $pull: { inscritos: req.params.idInscricao }, lotacaoAtual: subtrair}, { new: true }, function (err, evento) {
+					if (err)
+						res.send(err);
+					Inscricao.remove({ _id: req.params.idInscricao }, function (err, inscricao) {
+						if (err)
+							res.send(err);
+						res.json({ message: 'Inscricao eliminada!' });
+					});
+				});
+			});
+		} else {
+			res.json({ message: 'Evento sem inscricao!' });
+		}
+	});
+	
 };
