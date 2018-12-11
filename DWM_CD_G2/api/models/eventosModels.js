@@ -9,7 +9,7 @@ var mongoose = require('mongoose'),
 		},
 		lotacao: {
 			type: Number,
-			default: 0
+            required: 'Lotacao do evento'
 		},
 		lotacaoAtual: {
 			type: Number,
